@@ -54,12 +54,12 @@ def get_book(book_id: int, db: Session = Depends(get_db)):
 
 
 @app.post("/books", response_model=BookResponse, status_code=201)
-def create_book(book: BookCreate, db: Session = Depends(get_db)):
-    new_book = Book(**book.model_dump())
-    db.add(new_book)
+def create_book(data: BookCreate, db: Session = Depends(get_db)):
+    book = Book(**data.model_dump())
+    db.add(book)
     db.commit()
-    db.refresh(new_book)
-    return new_book
+    db.refresh(book)
+    return book
 
 
 @app.put("/books/{book_id}", response_model=BookResponse)
