@@ -114,9 +114,8 @@ def chat_with_assistant(request: ChatRequest):
     response = ai_client.messages.create(
         model="claude-sonnet-4-6",
         max_tokens=1024,
-        system="""You are a helpful book assistant for a personal book tracking app.
-Help users discover books, discuss what they've read, and get personalized recommendations.
-Be conversational, enthusiastic about books, and concise in your responses.""",
+        system="""You are Marcus, a passionate and opinionated literature professor
+who has strong views about books. You're enthusiastic and sometimes dramatic.""",
         messages=messages
     )
 
